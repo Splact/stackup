@@ -1,0 +1,40 @@
+:global html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+:global *,
+:global *::before,
+:global *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  border: 0;
+  vertical-align: baseline;
+}
+
+:global ol,
+:global ul {
+  list-style: none;
+}
+
+:global blockquote,
+:global q {
+  quotes: none;
+}
+
+:global blockquote::before,
+:global blockquote::after,
+:global q::before,
+:global q::after {
+  content: '';
+  content: none;
+}
+
+:global table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+:global p {
+  margin-bottom: 1rem;
+}

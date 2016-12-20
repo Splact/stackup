@@ -1,0 +1,31 @@
+{
+  "rules": {
+    "number-leading-zero": "never",
+    "number-max-precision": 3,
+    "number-no-trailing-zeros": true,
+
+    "string-quotes": "single",
+
+    "color-hex-case": "upper",
+    "color-hex-length": "short",
+
+    "property-case": "lower",
+
+    "at-rule-no-vendor-prefix": true,
+    "media-feature-name-no-vendor-prefix": true,
+    "property-no-vendor-prefix": true,
+    "selector-no-vendor-prefix": true,
+    "value-no-vendor-prefix": true,
+
+    "function-calc-no-unspaced-operator": true,
+    "function-max-empty-lines": 0,
+    "function-name-case": "lower",
+
+    "function-comma-space-after": "always",
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "value-list-comma-newline-after": "always-multi-line",
+    "value-list-comma-space-after": "always-single-line",
+    "value-list-comma-space-before": "never",
+  }
+}

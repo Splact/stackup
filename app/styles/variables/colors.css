@@ -1,0 +1,17 @@
+:export {
+  /*
+    Color definitions
+      pure HEXs, use composed names for common colors
+        BAD:  --red...
+        GOOD: --deep-red...
+        GOOD: --silver...
+
+      ** TIP ** Use Sip color picker (http://sipapp.io/) that will help you with color names
+  */
+  --medium-slate-blue: #66F;
+  --screamin-green: #6F6;
+  --pastel-red: #F66;
+  --dark-gray: #555;
+  --black-haze: #F7F7F7;
+  --concrete: #D0D0D0;
+}

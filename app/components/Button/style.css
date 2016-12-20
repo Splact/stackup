@@ -1,0 +1,26 @@
+:import('colors.css') {
+  --red: --pastel-red;
+  --blue: --medium-slate-blue;
+  --green: --screamin-green;
+}
+
+.button {
+  display: inline-block;
+  padding: .8rem 1.6rem;
+  background: --blue;
+  color: white;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.green {
+  background-color: --green;
+}
+.red {
+  background-color: --red;
+}
+.blue {
+  background-color: --blue;
+}

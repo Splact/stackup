@@ -1,0 +1,13 @@
+:export {
+  /*
+    typography definitions
+  */
+  --small-size: 1.2rem;
+  --medium-size: 1.6rem;
+  --large-size: 2.4rem;
+  --x-large-size: 3.2rem;
+  --xx-large-size: 4.8rem;
+
+  --text-family: 'Open Sans', sans-serif;
+  --heading-family: 'Oswald', sans-serif;
+}

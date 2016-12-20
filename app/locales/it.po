@@ -1,0 +1,128 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: i18next-conv\n"
+"POT-Creation-Date: 2016-08-01 12:35+0200\n"
+"PO-Revision-Date: 2016-08-01 12:36+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.6\n"
+
+msgid "React Boilerplate 404 page"
+msgstr "Pagina 404 di React Boilerplate"
+
+msgid "Page not found"
+msgstr "Pagina non trovata"
+
+msgid "Redux Saga example"
+msgstr "Esempio di Redux Saga"
+
+msgid "Redux Saga example against a user-fetch"
+msgstr "Esempio di Redux Saga con user-fetch"
+
+msgid "With the following interface you can try to different type of sagas."
+msgstr "Con la seguente interfaccia puoi provare differenti tipi di saga."
+
+msgid ""
+"The first one (\"Fetch user\") is based on a takeLatest watcher, this means "
+"that only the last action will be processed, the older ones will be "
+"cancelled."
+msgstr ""
+"Il primo tipo di saga (\"Fetch utente\") è basato sul watcher takeLatest, "
+"questo significa che solo l’ultima azione sarà processata, tutte le altre "
+"saranno cancellate."
+
+msgid ""
+"The second type of saga (\"Fetch User on channel\") works on a channel with "
+"three slots, this way only if there is a free slot an action will be "
+"processed, the other ones will be queued."
+msgstr ""
+"Il secondo tipo si saga (\"Fetch Utente su channel”) è basato su un channel "
+"con tre slot, in questo modo solo se c’è spazio nel canale una azione può "
+"essere processata, alternativamente questa viene messa in coda."
+
+msgid "Loading..."
+msgstr "Caricamento…"
+
+msgid "No pending requests."
+msgstr "Nessuna richiesta in elaborazione."
+
+msgid "Name"
+msgstr "Nome"
+
+msgid "Username"
+msgstr "Username"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Phone"
+msgstr "Telefono"
+
+msgid "Website"
+msgstr "Sito web"
+
+msgid "Is a fetching on a channel..."
+msgstr "Fetching su channel…"
+
+msgid "Pending requests"
+msgstr "Richieste in elaborazione"
+
+msgid "Requests in queue"
+msgstr "Richieste in coda"
+
+msgid "Refused requests"
+msgstr "Richieste rifiutate"
+
+msgid "Redux Storage example"
+msgstr "Esempio di Redux Storage"
+
+msgid "Redux Storage example on localforage"
+msgstr "Esempio di Redux Storage su localforage"
+
+msgid "Welcome"
+msgstr "Benvenuto"
+
+msgid "React Boilerplate welcome page"
+msgstr "Pagina di benvenuto di React Boilerplate"
+
+msgid ""
+"Use the nav bar to get in working examples of features provided by this "
+"boilerplate."
+msgstr ""
+"Usa la barra di navigazione per accedere agli esempi delle caratteristiche "
+"di questo boilerplate."
+
+msgid "The page {{codePath}} was not found."
+msgstr "La pagina {{codePath}} non esiste."
+
+msgid ""
+"When an action is fired, after a debounce time of 2s (specified in "
+"{{codePath}}), a {{codeAction}} action will save the updated state on "
+"localstorage."
+msgstr ""
+"Quando un’azione è lanciata, dopo un tempo di debounce di 2s (definito in "
+"{{codePath}}), una azione {{codeAction}} salverà lo stato aggiornato su "
+"localstorage."
+
+msgid "See it in action on {{link}}."
+msgstr "Osservalo in azione su {{link}}."
+
+#~ msgid ""
+#~ "See it in action on <a href=\"https://chrome.google.com/webstore/detail/"
+#~ "redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd\">redux-devtools</a>."
+#~ msgstr ""
+#~ "Vedilo in azione su <a href=“https://chrome.google.com/webstore/detail/"
+#~ "redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd”>redux-devtools</a>."
+
+#~ msgctxt "SAVE</code> action will save the updated state on localstorage."
+#~ msgid ""
+#~ "When an action is fired, after a debounce time of 2s (specified in "
+#~ "<code>./app/config/storage.js</code>), a <code>REDUX_STORAGE"
+#~ msgstr ""
+#~ "Quando un’azione è fired, after a debounce time of 2s (specifico in "
+#~ "<code>./app/config/storage.js</code>), a <code>REDUX_STORAGE"
