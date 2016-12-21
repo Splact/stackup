@@ -20,9 +20,10 @@ const PATHS = {
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   test: path.join(__dirname, 'tests'),
-  liveBasePath: '/',  // change this if the project is not on root folder when live
+  liveBasePath: '/stackup/',  // change this if the project is not on root folder when live
 };
 const pkg = require('./package.json');
+
 const isLive = process.argv.includes('--live') || process.argv.includes('-l');
 
 const common = {
