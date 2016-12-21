@@ -4,6 +4,9 @@ import merge from 'webpack-merge';
 // import webpack plugins
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
+import {
+  DefinePlugin,
+} from 'webpack';
 // import postcss plugins
 import autoprefixer from 'autoprefixer';
 import aspectRatio from 'postcss-aspect-ratio';
@@ -93,6 +96,10 @@ const common = {
 
       // inject meta info into template
       title: pkg.title,
+    }),
+    new DefinePlugin({
+      'process.env.NODE_ENV': '"production"',
+      BASE_PATH: isLive ? `"${PATHS.liveBasePath}"` : '"/"',
     }),
   ],
   resolve: {

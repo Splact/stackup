@@ -20,7 +20,7 @@ ReactDOM.render((
   <Provider store={store}>
     <I18nextProvider i18n={i18n}>
       <Router history={browserHistory}>
-        <Route path="/" component={App}>
+        <Route path={BASE_PATH || '/'} component={App}>
           <IndexRoute name="dashboard" component={Dashboard} />
 
           {/* Insert your routes here */}
