@@ -17,7 +17,7 @@ h1 {
   font-size: --heading--size;
   font-family: --heading--family;
   font-weight: bold;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 code {
@@ -34,7 +34,12 @@ hr {
   border-top: 1px solid --color--hr;
 }
 
-.sheet {
+.base {
+  width: 100%;
+  max-width: 640px;
+
+  margin: auto;
+
   background: white;
 
   box-shadow: 0 1.2rem 3.2rem -1.6rem rgba(0, 0, 0, .15);

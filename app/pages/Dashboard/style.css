@@ -19,6 +19,7 @@
 
 .form {
   width: 100%;
+  overflow: auto;
 
   input {
     display: block;

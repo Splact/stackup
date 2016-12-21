@@ -6,7 +6,7 @@ class Sheet extends Component {
     const { children } = this.props;
 
     return (
-      <div className={style.sheet}>
+      <div className={style.base}>
         {children}
       </div>
     );
