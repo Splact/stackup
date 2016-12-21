@@ -3,7 +3,7 @@ import Vibrant from 'node-vibrant';
 
 
 export default function getRandomPictureUrl() {
-  return fetch('http://source.unsplash.com/collection/462855/1600x900')
+  return fetch('https://source.unsplash.com/collection/462855/1600x900')
     .then(response => response.url)
     .then(url => {
       const img = new Image();
