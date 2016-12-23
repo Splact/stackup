@@ -58,19 +58,20 @@ class Dashboard extends Component {
           <ProjectsList />
         </div>
 
-        <div className={style.form}>
+        <form className={style.form}>
           <input
             type="text"
-            placeholder="Project name"
+            placeholder="Insert a project name..."
             value={projectField}
             onChange={this.projectFieldChangeHandler}
           />
           <button
+            type="submit"
             onClick={() => {
               this.props.create({ label: projectField });
             }}
-          >Create Project</button>
-        </div>
+          >Create project</button>
+        </form>
       </div>
     );
   }
