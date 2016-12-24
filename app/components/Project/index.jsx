@@ -16,6 +16,7 @@ class Project extends PureComponent {
     // initial state
     this.state = {
       stackedTime: this.getTime(),
+      initials: '',
     };
 
     // binding methods
@@ -31,6 +32,10 @@ class Project extends PureComponent {
     if (this.props.currentTimer) {
       this.startTimer();
     }
+
+    this.setState({
+      initials: this.getInitials(),
+    });
   }
   componentWillReceiveProps(nextProps) {
     if (!this.props.currentTimer && nextProps.currentTimer) {
@@ -46,6 +51,10 @@ class Project extends PureComponent {
   }
 
   /** Internal methods **/
+  getInitials() {
+    const words = this.props.label.split(/[\s,]+/);
+    return words.slice(0, 3).map(w => w[0]).reduce((f, s) => f + s);
+  }
   getTime() {
     const { streaks, currentTimer } = this.props;
 
@@ -89,8 +98,8 @@ class Project extends PureComponent {
 
   /** Render **/
   render() {
-    const { label, picture, color, hotkey } = this.props;
-    const { stackedTime } = this.state;
+    const { picture, color, hotkey } = this.props;
+    const { stackedTime, initials } = this.state;
 
     const inlineStyle = {
       background: 'black',
@@ -105,7 +114,7 @@ class Project extends PureComponent {
     return (
       <div className={style.base} style={inlineStyle} onClick={this.timerToggleHandler}>
         <div className={style.infoWrapper}>
-          <div className={style.label}>{label[0]}</div>
+          <div className={style.label}>{initials}</div>
           <div className={style.stackedTime}>{numeral(stackedTime / 1000).format('00:00:00')}</div>
           <div className={style.hotkey}>{hotkey}</div>
         </div>
