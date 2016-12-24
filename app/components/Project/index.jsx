@@ -98,7 +98,7 @@ class Project extends PureComponent {
 
   /** Render **/
   render() {
-    const { picture, color, hotkey } = this.props;
+    const { label, picture, color, hotkey } = this.props;
     const { stackedTime, initials } = this.state;
 
     const inlineStyles = {
@@ -117,7 +117,12 @@ class Project extends PureComponent {
     };
 
     return (
-      <div className={style.base} style={inlineStyles.base} onClick={this.timerToggleHandler}>
+      <div
+        className={style.base}
+        style={inlineStyles.base}
+        title={label}
+        onClick={this.timerToggleHandler}
+      >
         <div className={style.infoWrapper} style={inlineStyles.infoWrapper}>
           <div className={style.label}>{initials}</div>
           <div className={style.stackedTime}>{numeral(stackedTime / 1000).format('00:00:00')}</div>
