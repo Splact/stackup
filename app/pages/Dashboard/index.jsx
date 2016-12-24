@@ -67,7 +67,11 @@ class Dashboard extends Component {
           />
           <button
             type="submit"
-            onClick={() => {
+            onClick={e => {
+              e.preventDefault();
+              this.setState({
+                projectField: '',
+              });
               this.props.create({ label: projectField });
             }}
           >Create project</button>
