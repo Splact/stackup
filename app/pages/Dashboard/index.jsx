@@ -69,6 +69,11 @@ class Dashboard extends Component {
             type="submit"
             onClick={e => {
               e.preventDefault();
+
+              if (!projectField) {
+                return;
+              }
+
               this.setState({
                 projectField: '',
               });
