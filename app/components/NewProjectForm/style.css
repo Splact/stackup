@@ -1,0 +1,49 @@
+:import('colors.css') {
+  --input-border: --concrete;
+  --button-bg: --medium-slate-blue;
+}
+:import('mediaqueries.css') {
+  --tablet: --tablet;
+}
+
+
+.base {
+  width: 100%;
+  overflow: auto;
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 1em;
+
+    background: white;
+    border-left: 5px solid white;
+
+    transition: border-left .4s ease-in;
+
+    outline: none;
+
+    &:focus {
+      border-color: --input-border;
+    }
+
+    @media --tablet {
+      width: 70%;
+      float: left;
+    }
+  }
+
+  button {
+    display: block;
+    width: 100%;
+    padding: 1em;
+
+    background: --button-bg;
+    color: white;
+
+    @media --tablet {
+      width: 30%;
+      float: left;
+    }
+  }
+}

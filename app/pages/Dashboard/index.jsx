@@ -1,44 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
 import { translate } from 'react-i18next';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { create } from '../../actions/project';
 import ProjectsList from '../../components/ProjectsList';
+import NewProjectForm from '../../components/NewProjectForm';
 import style from './style.css';
 
 
-function mapStateToProps() {
-  return {};
-}
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({
-    create,
-  }, dispatch);
-}
-
-@connect(mapStateToProps, mapDispatchToProps)
 @translate()
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      projectField: '',
-    };
-
-    this.projectFieldChangeHandler = this.projectFieldChangeHandler.bind(this);
-  }
-
-  projectFieldChangeHandler(e) {
-    this.setState({
-      projectField: e.target.value,
-    });
-  }
-
+  /** Render **/
   render() {
     const { t } = this.props;
-    const { projectField } = this.state;
 
     return (
       <div className={style.base}>
@@ -58,29 +30,7 @@ class Dashboard extends Component {
           <ProjectsList />
         </div>
 
-        <form className={style.form}>
-          <input
-            type="text"
-            placeholder="Insert a project name..."
-            value={projectField}
-            onChange={this.projectFieldChangeHandler}
-          />
-          <button
-            type="submit"
-            onClick={e => {
-              e.preventDefault();
-
-              if (!projectField) {
-                return;
-              }
-
-              this.setState({
-                projectField: '',
-              });
-              this.props.create({ label: projectField });
-            }}
-          >Create project</button>
-        </form>
+        <NewProjectForm />
       </div>
     );
   }
