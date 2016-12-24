@@ -101,25 +101,30 @@ class Project extends PureComponent {
     const { picture, color, hotkey } = this.props;
     const { stackedTime, initials } = this.state;
 
-    const inlineStyle = {
-      background: 'black',
-      // color: color && contrast(color) === 'light' ? '#000' : '#FFF',
-      color: '#FFF',
+    const inlineStyles = {
+      base: {
+        color,
+      },
+      infoWrapper: {
+        color: color && contrast(color) === 'light' ? '#000' : '#FFF',
+      },
+      background: {
+        backgroundImage: `url(${picture})`,
+      },
+      orbiter: {
+        backgroundColor: color,
+      },
     };
-    const backgroundInlineStyle = {
-      backgroundImage: `url(${picture})`,
-    };
-    const orbiterInlineStyle = { backgroundColor: color };
 
     return (
-      <div className={style.base} style={inlineStyle} onClick={this.timerToggleHandler}>
-        <div className={style.infoWrapper}>
+      <div className={style.base} style={inlineStyles.base} onClick={this.timerToggleHandler}>
+        <div className={style.infoWrapper} style={inlineStyles.infoWrapper}>
           <div className={style.label}>{initials}</div>
           <div className={style.stackedTime}>{numeral(stackedTime / 1000).format('00:00:00')}</div>
           <div className={style.hotkey}>{hotkey}</div>
         </div>
-        <div className={style.orbiter} style={orbiterInlineStyle}></div>
-        <div className={style.background} style={backgroundInlineStyle} />
+        <div className={style.orbiter} style={inlineStyles.orbiter}></div>
+        <div className={style.background} style={inlineStyles.background} />
       </div>
     );
   }
