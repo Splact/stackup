@@ -98,7 +98,6 @@ const common = {
       title: pkg.title,
     }),
     new DefinePlugin({
-      'process.env.NODE_ENV': '"production"',
       BASE_PATH: isLive ? `"${PATHS.liveBasePath}"` : '"/"',
     }),
   ],
