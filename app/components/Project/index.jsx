@@ -31,6 +31,7 @@ class Project extends PureComponent {
   timer = false;
   longPressTimeout = null;
   isTimerToggleDisabled = false;
+  isUnmounting = false;
 
   /** React lifecycle **/
   componentWillMount() {
@@ -169,23 +170,33 @@ class Project extends PureComponent {
         }
       }
 
+      // detect corner
+      const isTop = y < -height / 3;
+      const isLeft = x < -width / 3;
+      const isBottom = y > height / 3;
+      const isRight = x > width / 3;
+
       // execute corner action
-      if (x < -width / 3 && y < -height / 3) {
+      if (isLeft && isTop) {
         console.log(`[${this.state.initials}] TOP LEFT CORNER ACTION (not defined yet)`);
-      } else if (x > width / 3 && y < -height / 3) {
+      } else if (isRight && isTop) {
         console.log(`[${this.state.initials}] TOP RIGHT CORNER ACTION (not defined yet)`);
-      } else if (x > width / 3 && y > height / 3) {
+      } else if (isRight && isBottom) {
         console.log(`[${this.state.initials}] BOTTOM RIGHT CORNER ACTION (clear)`);
         this.props.clear(this.props.id);
-      } else if (x < -width / 3 && y > height / 3) {
-        console.log(`[${this.state.initials}] BOTTOM LEFT CORNER ACTION (not defined yet)`);
+      } else if (isLeft && isBottom) {
+        console.log(`[${this.state.initials}] BOTTOM LEFT CORNER ACTION (discard)`);
+        this.isUnmounting = true;
+        this.props.discard(this.props.id);
       } else {
         console.log(`[${this.state.initials}] NO ACTION`);
       }
 
-      this.setState({
-        isOptionsPanelOpen: false,
-      });
+      if (!this.isUnmounting) {
+        this.setState({
+          isOptionsPanelOpen: false,
+        });
+      }
 
       setTimeout(() => {
         this.isTimerToggleDisabled = false;
@@ -210,6 +221,7 @@ class Project extends PureComponent {
         [style.panelOpen]: isOptionsPanelOpen,
       }),
       clearAction: classnames(style.action, style.clear),
+      discardAction: classnames(style.action, style.discard),
     };
 
     const inlineStyles = {
@@ -242,6 +254,7 @@ class Project extends PureComponent {
         </div>
         <div className={style.actionsWrapper}>
           <div className={classes.clearAction}></div>
+          <div className={classes.discardAction}></div>
         </div>
         <div className={style.orbiter} style={inlineStyles.orbiter}></div>
         <div className={style.background} style={inlineStyles.background} />
@@ -268,6 +281,7 @@ Project.propTypes = {
   start: PropTypes.func,
   stop: PropTypes.func,
   clear: PropTypes.func,
+  discard: PropTypes.func,
 };
 
 

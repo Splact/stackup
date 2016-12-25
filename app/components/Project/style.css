@@ -137,16 +137,26 @@
 
     position: absolute;
 
-    transform: translate(50%, 50%);
 
     font-size: 1.2rem;
+    text-align: center;
 
     &.clear {
       bottom: 0;
       right: 0;
+      transform: translate(50%, 50%);
 
       &::after {
-        content: 'c';
+        content: 'clear';
+      }
+    }
+    &.discard {
+      bottom: 0;
+      left: 0;
+      transform: translate(-50%, 50%);
+
+      &::after {
+        content: 'discard';
       }
     }
   }

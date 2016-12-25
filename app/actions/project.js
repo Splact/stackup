@@ -8,6 +8,7 @@ export const PROJECT_UPDATE_INFO = 'PROJECT_UPDATE_INFO';
 export const PROJECT_START_TIMER = 'PROJECT_START_TIMER';
 export const PROJECT_STOP_TIMER = 'PROJECT_STOP_TIMER';
 export const PROJECT_CLEAR = 'PROJECT_CLEAR';
+export const PROJECT_DISCARD = 'PROJECT_DISCARD';
 
 
 export const create = createAction(PROJECT_CREATE, project => {
@@ -22,3 +23,4 @@ export const update = createAction(PROJECT_UPDATE_INFO, project => project);
 export const start = createAction(PROJECT_START_TIMER, id => id);
 export const stop = createAction(PROJECT_STOP_TIMER, id => id);
 export const clear = createAction(PROJECT_CLEAR, id => id);
+export const discard = createAction(PROJECT_DISCARD, id => id);

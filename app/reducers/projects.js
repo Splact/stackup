@@ -5,6 +5,7 @@ import {
     PROJECT_START_TIMER,
     PROJECT_STOP_TIMER,
     PROJECT_CLEAR,
+    PROJECT_DISCARD,
 } from '../actions/project';
 
 // define initial state
@@ -107,6 +108,10 @@ const reducerMap = {
 
       return { ...p };
     }),
+  }),
+  [PROJECT_DISCARD]: ({ list, ...state }, { payload: id }) => ({
+    ...state,
+    list: list.filter(p => p.id !== id),
   }),
 };
 
