@@ -27,7 +27,8 @@ class Dashboard extends Component {
         />
         <div className={style.content}>
           <h1 className={style.title}>{t('Stackup')}</h1>
-          <ProjectsList />
+          <ProjectsList showPinned />
+          <ProjectsList showUnpinned />
         </div>
 
         <NewProjectForm />

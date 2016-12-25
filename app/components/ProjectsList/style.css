@@ -1,6 +1,14 @@
+:import('colors.css') {
+  --gray: --black-haze;
+}
+
 .base {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
+
+  + .base {
+    border-top: 1px solid --gray;
+  }
 }

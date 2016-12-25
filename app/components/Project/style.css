@@ -29,9 +29,7 @@
   &:hover {
     box-shadow: 0 0 32px -6px currentColor;
   }
-
 }
-
 .info-wrapper {
   display: flex;
   flex-direction: column;
@@ -157,6 +155,19 @@
 
       &::after {
         content: 'discard';
+      }
+    }
+    &.pin {
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+
+      &::after {
+        content: 'pin';
+
+        .pinned & {
+          content: 'unpin';
+        }
       }
     }
   }

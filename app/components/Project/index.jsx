@@ -178,7 +178,13 @@ class Project extends PureComponent {
 
       // execute corner action
       if (isLeft && isTop) {
-        console.log(`[${this.state.initials}] TOP LEFT CORNER ACTION (not defined yet)`);
+        console.log(`[${this.state.initials}] TOP LEFT CORNER ACTION (pin/unpin)`);
+        this.isUnmounting = true;
+        if (this.props.isPinned) {
+          this.props.unpin(this.props.id);
+        } else {
+          this.props.pin(this.props.id);
+        }
       } else if (isRight && isTop) {
         console.log(`[${this.state.initials}] TOP RIGHT CORNER ACTION (not defined yet)`);
       } else if (isRight && isBottom) {
@@ -212,14 +218,17 @@ class Project extends PureComponent {
 
   /** Render **/
   render() {
-    const { label, picture, color, hotkey, currentTimer } = this.props;
+    const { label, picture, color, hotkey, isPinned, currentTimer } = this.props;
     const { stackedTime, initials, isOptionsPanelOpen } = this.state;
 
     const classes = {
       base: classnames(style.base, {
+        [style.pinned]: isPinned,
         [style.running]: !!currentTimer,
         [style.panelOpen]: isOptionsPanelOpen,
+        [style.panelOpen]: isOptionsPanelOpen,
       }),
+      pinAction: classnames(style.action, style.pin),
       clearAction: classnames(style.action, style.clear),
       discardAction: classnames(style.action, style.discard),
     };
@@ -253,6 +262,7 @@ class Project extends PureComponent {
           <div className={style.hotkey}>{hotkey}</div>
         </div>
         <div className={style.actionsWrapper}>
+          <div className={classes.pinAction}></div>
           <div className={classes.clearAction}></div>
           <div className={classes.discardAction}></div>
         </div>
@@ -278,10 +288,13 @@ Project.propTypes = {
     PropTypes.arrayOf(datePropType)
   ),
   currentTimer: datePropType,
+  isPinned: PropTypes.bool,
   start: PropTypes.func,
   stop: PropTypes.func,
   clear: PropTypes.func,
   discard: PropTypes.func,
+  pin: PropTypes.func,
+  unpin: PropTypes.func,
 };
 
 

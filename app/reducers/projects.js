@@ -6,6 +6,8 @@ import {
     PROJECT_STOP_TIMER,
     PROJECT_CLEAR,
     PROJECT_DISCARD,
+    PROJECT_PIN,
+    PROJECT_UNPIN,
 } from '../actions/project';
 
 // define initial state
@@ -39,6 +41,7 @@ const reducerMap = {
           hotkey: null,
           streaks,
           currentTimer: null,
+          isPinned: false,
         },
       ],
     };
@@ -112,6 +115,32 @@ const reducerMap = {
   [PROJECT_DISCARD]: ({ list, ...state }, { payload: id }) => ({
     ...state,
     list: list.filter(p => p.id !== id),
+  }),
+  [PROJECT_PIN]: ({ list, ...state }, { payload: id }) => ({
+    ...state,
+    list: list.map(p => {
+      if (p.id === id) {
+        return {
+          ...p,
+          isPinned: true,
+        };
+      }
+
+      return { ...p };
+    }),
+  }),
+  [PROJECT_UNPIN]: ({ list, ...state }, { payload: id }) => ({
+    ...state,
+    list: list.map(p => {
+      if (p.id === id) {
+        return {
+          ...p,
+          isPinned: false,
+        };
+      }
+
+      return { ...p };
+    }),
   }),
 };
 
