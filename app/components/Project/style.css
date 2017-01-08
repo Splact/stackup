@@ -1,5 +1,6 @@
 :import('colors.css') {
   --gray: --black-haze;
+  --dark-gray: --dark-gray;
 }
 
 .base {
@@ -18,11 +19,13 @@
   cursor: pointer;
   user-select: none;
 
+  color: --gray;
   background: currentColor;
 
   transition: transform .3s cubic-bezier(.23, 1, .32, 1),
               opacity .3s cubic-bezier(.23, 1, .32, 1),
-              box-shadow .4s ease-in-out;
+              box-shadow .4s ease-in-out,
+              background-color .4s ease-in;
   box-shadow: 0 0 32px -32px currentColor;
 
   &.running,
@@ -72,11 +75,18 @@
 
   transform: scale(1.01);
 
-  opacity: .85;
+  opacity: 0;
+
+  &--loaded {
+    opacity: .85;
+
+    .panel-open & {
+      opacity: .5;
+    }
+  }
 
   .panel-open & {
     transform: scale(.8);
-    opacity: .5;
   }
 }
 
@@ -91,8 +101,11 @@
 
   border-radius: 50%;
 
+  background: --dark-gray;
+
   transform-origin: .8rem 6.8rem;
-  transition: transform 1s linear;
+  transition: transform 1s linear,
+              background-color .4s ease-in;
 }
 
 .label {
@@ -139,6 +152,15 @@
     font-size: 1.2rem;
     text-align: center;
 
+    &.change-picture {
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+
+      &::after {
+        content: 'change picture';
+      }
+    }
     &.clear {
       bottom: 0;
       right: 0;

@@ -1,12 +1,16 @@
 import { takeEvery } from 'redux-saga';
 import { call, put } from 'redux-saga/effects';
-import { PROJECT_CREATE, update } from '../actions/project';
-import Vibrant from 'node-vibrant';
+import { PROJECT_CREATE, PROJECT_CHANGE_PICTURE, update } from '../actions/project';
 import getRandomPictureUrl from '../libs/randomPictureUrl';
 
 // Handlers Sagas
-function* handleProjectCreation({ payload }) {
-  const { id } = payload;
+function* handleProjectPictureChange({ payload }) {
+  const id = payload.id || payload;
+
+  if (!id) {
+    return;
+  }
+
   try {
     const { url, color } = yield call(getRandomPictureUrl);
 
@@ -18,12 +22,16 @@ function* handleProjectCreation({ payload }) {
 
 // Watchers Sagas
 function* watchProjectCreation() {
-  yield* takeEvery(PROJECT_CREATE, handleProjectCreation);
+  yield* takeEvery(PROJECT_CREATE, handleProjectPictureChange);
+}
+function* watchProjectChangePicture() {
+  yield* takeEvery(PROJECT_CHANGE_PICTURE, handleProjectPictureChange);
 }
 
 // Composed saga
 export default function* watchers() {
   yield [
     watchProjectCreation(),
+    watchProjectChangePicture(),
   ];
 }

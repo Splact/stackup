@@ -18,6 +18,7 @@ class Project extends PureComponent {
     this.pointerDownHandler = this.pointerDownHandler.bind(this);
     this.pointerUpHandler = this.pointerUpHandler.bind(this);
     this.longPressHandler = this.longPressHandler.bind(this);
+    this.preloadPicture = this.preloadPicture.bind(this);
   }
 
   /** Internal props **/
@@ -25,6 +26,7 @@ class Project extends PureComponent {
     stackedTime: this.getTime(this.props.streaks, this.props.currentTimer),
     initials: '',
     isOptionsPanelOpen: false,
+    isPictureLoading: true,
   }
   clockCycleIteration = Math.round((this.state.stackedTime / 1000) % 60);
   orbiterRotation = 0;
@@ -37,6 +39,10 @@ class Project extends PureComponent {
   componentWillMount() {
     if (this.props.currentTimer) {
       this.startTimer();
+    }
+
+    if (this.props.picture) {
+      this.preloadPicture(this.props.picture);
     }
 
     this.updateOrbiterRotation();
@@ -63,6 +69,16 @@ class Project extends PureComponent {
       this.orbiterRotation = this.clockCycleIteration = 0;
       this.setState({ stackedTime: 0 });
     }
+
+    if (this.props.picture !== nextProps.picture) {
+      if (!nextProps.picture) {
+        this.setState({
+          isPictureLoading: true,
+        });
+      } else {
+        this.preloadPicture(nextProps.picture);
+      }
+    }
   }
   componentWillUnmount() {
     this.stopTimer();
@@ -72,6 +88,22 @@ class Project extends PureComponent {
   }
 
   /** Internal methods **/
+  preloadPicture(src) {
+    const img = new Image();
+    img.onload = () => {
+      this.setState({
+        isPictureLoading: false,
+        isPictureLoadedCorrectly: true,
+      });
+    };
+    img.onerror = () => {
+      this.setState({
+        isPictureLoading: false,
+        isPictureLoadedCorrectly: false,
+      });
+    };
+    img.src = src;
+  }
   getInitials() {
     const words = this.props.label.split(/[\s,]+/);
     return words.slice(0, 3).map(w => w[0].toUpperCase()).reduce((f, s) => f + s);
@@ -186,7 +218,8 @@ class Project extends PureComponent {
           this.props.pin(this.props.id);
         }
       } else if (isRight && isTop) {
-        console.log(`[${this.state.initials}] TOP RIGHT CORNER ACTION (not defined yet)`);
+        console.log(`[${this.state.initials}] TOP RIGHT CORNER ACTION (change picture)`);
+        this.props.changePicture(this.props.id);
       } else if (isRight && isBottom) {
         console.log(`[${this.state.initials}] BOTTOM RIGHT CORNER ACTION (clear)`);
         this.props.clear(this.props.id);
@@ -219,7 +252,7 @@ class Project extends PureComponent {
   /** Render **/
   render() {
     const { label, picture, color, hotkey, isPinned, currentTimer } = this.props;
-    const { stackedTime, initials, isOptionsPanelOpen } = this.state;
+    const { stackedTime, initials, isOptionsPanelOpen, isPictureLoading, isPictureLoadedCorrectly } = this.state;
 
     const classes = {
       base: classnames(style.base, {
@@ -228,9 +261,13 @@ class Project extends PureComponent {
         [style.panelOpen]: isOptionsPanelOpen,
         [style.panelOpen]: isOptionsPanelOpen,
       }),
+      changePictureAction: classnames(style.action, style.changePicture),
       pinAction: classnames(style.action, style.pin),
       clearAction: classnames(style.action, style.clear),
       discardAction: classnames(style.action, style.discard),
+      background: classnames(style.background, {
+        [style.backgroundLoaded]: !isPictureLoading && isPictureLoadedCorrectly,
+      }),
     };
 
     const inlineStyles = {
@@ -262,12 +299,13 @@ class Project extends PureComponent {
           <div className={style.hotkey}>{hotkey}</div>
         </div>
         <div className={style.actionsWrapper}>
+          <div className={classes.changePictureAction}></div>
           <div className={classes.pinAction}></div>
           <div className={classes.clearAction}></div>
           <div className={classes.discardAction}></div>
         </div>
         <div className={style.orbiter} style={inlineStyles.orbiter}></div>
-        <div className={style.background} style={inlineStyles.background} />
+        <div className={classes.background} style={inlineStyles.background} />
       </div>
     );
   }

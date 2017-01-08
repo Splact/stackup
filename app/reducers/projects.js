@@ -8,6 +8,7 @@ import {
     PROJECT_DISCARD,
     PROJECT_PIN,
     PROJECT_UNPIN,
+    PROJECT_CHANGE_PICTURE,
 } from '../actions/project';
 
 // define initial state
@@ -57,6 +58,22 @@ const reducerMap = {
             ...p,
             picture,
             color,
+          };
+        }
+
+        return { ...p };
+      }),
+    };
+  },
+  [PROJECT_CHANGE_PICTURE]: ({ list, ...state }, { payload: id }) => {
+    return {
+      ...state,
+      list: list.map(p => {
+        if (p.id === id) {
+          return {
+            ...p,
+            picture: null,
+            color: null,
           };
         }
 

@@ -6,7 +6,7 @@ import style from './style.css';
 
 class ProjectsList extends PureComponent {
   render() {
-    const { projects, start, stop, clear, discard, pin, unpin } = this.props;
+    const { projects, start, stop, clear, discard, pin, unpin, changePicture } = this.props;
 
     return (
       <div className={style.base}>
@@ -19,6 +19,7 @@ class ProjectsList extends PureComponent {
             discard={discard}
             pin={pin}
             unpin={unpin}
+            changePicture={changePicture}
             {...p}
           />
         ))}
